@@ -19,7 +19,10 @@ setup(
                 '-gencode=arch=compute_75,code=sm_75', '-gencode=arch=compute_75,code=compute_75'
             ],
         },
-        libraries=['nvinfer', 'nvinfer_plugin', 'nvonnxparser'])
+        include_dirs = ['/your/path/to/TensorRT-6.0.1.5/include'],
+        libraries=['nvinfer', 'nvinfer_plugin', 'nvonnxparser','opencv_core', 'opencv_imgproc', 'opencv_highgui','opencv_imgcodecs','opencv_photo'],
+        library_dirs = ['/usr/lib/x86_64-linux-gnu','/your/path/to/TensorRT-6.0.1.5/lib']
+        )
     ],
     cmdclass={'build_ext': BuildExtension.with_options(no_python_abi_suffix=True)},
     install_requires=[
